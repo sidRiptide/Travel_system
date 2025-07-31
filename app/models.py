@@ -22,7 +22,7 @@ class Plan_info(models.Model):
     return_date = models.DateField()
     adults = models.IntegerField()
     children = models.IntegerField()
-    tour = models.CharField(max_length=10, choices=TOUR_CHOICES)
+    tour_type = models.CharField(max_length=10, choices=TOUR_CHOICES)
 
     def __str__(self):
         return self.destination
