@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container mt-5">
+    <h2>Search Results</h2>
+    {% if trips %}
+      {% for trip in trips %}
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5>{{ trip.destination }}</h5>
+            <p>{{ trip.tour_type }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No trips match your criteria.</p>
+    {% endif %}
+  </div>
+{% endblock %}

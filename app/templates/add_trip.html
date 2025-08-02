@@ -1,40 +1,84 @@
-{% extends 'base.html' %}
 {% load static %}
 
-<!--<!DOCTYPE html>-->
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
+/* Form Container */
+.form-container {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
 
-{% block content %}
-    <!-- Travel Hero Section -->
-    <section id="travel-hero" class="travel-hero section dark-background">
+/* Form Group */
+.form-group {
+    margin-bottom: 15px;
+}
 
-      <div class="hero-background">
-        <video autoplay="" muted="" loop="">
-          <source src="{% static 'assets/img/travel/video-2.mp4'%}" type="video/mp4">
-        </video>
-        <div class="hero-overlay"></div>
-      </div>
+label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
 
-      <div class="container position-relative">
-        <div class="row align-items-center">
-          <div class="col-lg-7">
-            <div class="hero-text" data-aos="fade-up" data-aos-delay="100">
-              <h1 class="hero-title">Discover Your Perfect Journey</h1>
-              <p class="hero-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-              <div class="hero-buttons">
-                <a href="#" class="btn btn-primary me-3">Start Exploring</a>
-                <a href="#" class="btn btn-outline">Browse Tours</a>
-              </div>
-            </div>
-          </div>
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease-in-out;
+}
 
-          <div class="col-lg-5">
-            <div class="booking-form-wrapper" data-aos="fade-left" data-aos-delay="200">
-              <div class="booking-form">
+input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+button.submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.submit:hover {
+    background-color: #0056b3;
+}
+
+button.submit:active {
+    background-color: #004085;
+}
+
+</style>
+
+    <div class="booking-form">
                 <h3 class="form-title">Plan Your Adventure</h3>
-                <form action="{% url 'results' %}" class="" method="GET">
-                  {% csrf_token %}
+                <form action="" class="" method="POST">
+                    {% csrf_token %}
                   <div class="form-group mb-3">
                     <label for="destination">Destination</label>
                     <select name="destination" id="destination" class="form-select" required="">
@@ -51,13 +95,13 @@
                     <div class="col-md-6">
                       <div class="form-group mb-3">
                         <label for="checkin">Departure Date</label>
-                        <input type="date" name="checkin" id="checkin" class="form-control" required="">
+                        <input type="date" name="departure_date" id="checkin" class="form-control" required="">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group mb-3">
                         <label for="checkout">Return Date</label>
-                        <input type="date" name="checkout" id="checkout" class="form-control" required="">
+                        <input type="date" name="return_date" id="checkout" class="form-control" required="">
                       </div>
                     </div>
                   </div>
@@ -99,24 +143,6 @@
                     </select>
                   </div>
 
-                  <button type="submit" class="btn btn-primary w-100">Find Your Perfect Trip</button>
+                  <button type="submit" class="btn btn-primary w-100">Add Trip</button>
                 </form>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </section><!-- /Travel Hero Section -->
-
-    <!-- Why Us Section -->
-
-
-
-
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-{% endblock %}

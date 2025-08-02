@@ -23,6 +23,7 @@ class Plan_info(models.Model):
     adults = models.IntegerField()
     children = models.IntegerField()
     tour_type = models.CharField(max_length=10, choices=TOUR_CHOICES)
+    image = models.ImageField(upload_to='destinations/', blank=True)
 
     def __str__(self):
         return self.destination
