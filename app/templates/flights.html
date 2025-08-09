@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% block content %}
+<h1>Kenya Airways Flights</h1>
+
+{% if flights %}
+    <ul>
+        {% for flight in flights %}
+            <li>
+                {{ flight.flight.iata }}:
+                {{ flight.departure.iata }} → {{ flight.arrival.iata }}
+                | Status: {{ flight.flight_status }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No flights found right now.</p>
+{% endif %}
+{% endblock %}

@@ -1,18 +1,54 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block content %}
-  <div class="container mt-5">
-    <h2>Search Results</h2>
+<div class="container">
+  <br><br>
+    <h1>Search Results</h1>
+
+    <!-- ===== Trip Results ===== -->
+    <h2>Available Trips</h2>
     {% if trips %}
-      {% for trip in trips %}
-        <div class="card mb-3">
-          <div class="card-body">
-            <h5>{{ trip.destination }}</h5>
-            <p>{{ trip.tour_type }}</p>
-          </div>
-        </div>
-      {% endfor %}
+        <ul>
+        {% for trip in trips %}
+            <li>
+                <strong>{{ trip.destination }}</strong> - {{ trip.tour_type }}
+                (Price: {{ trip.price }}, Start: {{ trip.start_date }})
+            </li>
+        {% endfor %}
+        </ul>
     {% else %}
-      <p>No trips match your criteria.</p>
+        <p>No matching trips found.</p>
     {% endif %}
-  </div>
+
+    <hr>
+
+
+    <!-- ===== Flight Results ===== -->
+    <h2>Live Flight Data</h2>
+    {% if flights %}
+        <table border="1" cellpadding="5">
+            <thead>
+                <tr>
+                    <th>Airline</th>
+                    <th>Flight Number</th>
+                    <th>Departure</th>
+                    <th>Arrival</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for flight in flights %}
+                <tr>
+                    <td>{{ flight.airline.name }}</td>
+                    <td>{{ flight.flight.iata }}</td>
+                    <td>{{ flight.departure.airport }} ({{ flight.departure.iata }})</td>
+                    <td>{{ flight.arrival.airport }} ({{ flight.arrival.iata }})</td>
+                    <td>{{ flight.flight_status }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No flights found for this route/date.</p>
+    {% endif %}
+</div>
 {% endblock %}
